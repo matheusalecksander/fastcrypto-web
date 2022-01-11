@@ -1,0 +1,15 @@
+.button {
+  padding: 0.5rem;
+  width: 160px;
+  background: var(--blue-gray-200);
+  box-shadow: 0 0 0.5rem var(--blue-gray-100);
+  border: none;
+  color: var(--gray-500);
+
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.button:hover {
+  filter: brightness(0.8);
+}

@@ -1,0 +1,17 @@
+.invisible {
+  display: none;
+}
+
+.visible {
+  width: 65vw;
+  min-height: 100vh;
+  background: linear-gradient(
+    to right,
+    var(--gray-950),
+    var(--gray-950),
+    var(--blue-gray-500)
+  );
+  position: fixed;
+  top: 0;
+  left: 0;
+}

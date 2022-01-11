@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FastCrypto
 
-## Getting Started
+Site para mostrar as cotações das principais criptomoedas do mercado.
 
-First, run the development server:
+Nessa primeira versão estou listando apenas as 20 maiores moedas.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Este projeto está sendo desenvolvido para fins de estudos e não tem fins lucrativos.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+###### Acesse o projeto na web
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Como executar o projeto:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Primeiro clone o repositório:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  ```
+  git clone https://github.com/matheusalecksander/fastcrypto-web.git
+  ```
 
-## Learn More
+- Após clonar, instale as dependências do projeto utilizando o comando yarn dentro da pasta raiz do projeto:
 
-To learn more about Next.js, take a look at the following resources:
+  ```
+  yarn
+  ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Para que o projeto execute de forma correta você precisará de uma api key da nomics, garanta a sua acessando:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  ```
+  https://p.nomics.com/cryptocurrency-bitcoin-api
+  ```
 
-## Deploy on Vercel
+- Crie na raiz do projeto um arquivo chamado .env.local e salve a sua chave da api lá:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  ```
+  API_KEY="SUA_CHAVE_AQUI"
+  ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Pronto, agora é só executar o projeto e fazer suas próprias alterações:
+  ```
+  yarn dev
+  ```
+
+#### Mudanças que irei implementar
+
+- Campo de busca;
+- Página de detalhes com mais informações;
+- Listar mais criptomoeadas, utilizando paginação;
+
+###### Sinta-se a vontade para contribuir ou sugerir novas funcionalidades
+
+###### Meus Contatos
+
+- Linkedin : https://linkedin.com/in/matheus-alecksander
+- Email: matheusalecksander@gmail.com
+
+<img src="./.github/home_page_print.png" />
