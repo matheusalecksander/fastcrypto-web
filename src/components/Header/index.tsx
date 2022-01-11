@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
-import { MenuItems } from "../MenuItems";
-import { FaStream, FaTimes } from 'react-icons/fa'
+import { MenuItems } from '../MenuItems';
+import { FaStream, FaTimes } from 'react-icons/fa';
+import Link from 'next/link'
 
-import styles from './header.module.scss'
+import styles from './header.module.scss';
 
 interface HeaderProps {
   onClick: () => void;
@@ -11,13 +11,14 @@ interface HeaderProps {
 }
 
 export function Header({showCloseMenuIcon = false, onClick, windowWidth}: HeaderProps) {
-  const router = useRouter();
   return (
     <header className={styles.appHeader}>
       <div className={styles.logoContainer}>
-        <h1>
-          FastCrypto
-        </h1>
+        <Link href="/">
+          <h1>
+            FastCrypto
+          </h1>
+        </Link>
       </div>
       <nav>
         {
