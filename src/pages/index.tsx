@@ -15,13 +15,7 @@ interface CryptoProps {
 
 const apiKey = process.env.API_KEY
 
-export async function getStaticProps({
-  id,
-  logo_url,
-  name, 
-  price,
-  rank}
-  : CryptoProps) {
+export async function getServerSideProps() {
   const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=20&page=1`)
 
   const cryptos: CryptoProps[] = response.data
