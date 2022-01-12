@@ -6,7 +6,7 @@ Nessa primeira versão estou listando apenas as 20 maiores moedas.
 
 Este projeto está sendo desenvolvido para fins de estudos e não tem fins lucrativos.
 
-###### Acesse o projeto na web
+<a href="https://fastcrypto.vercel.app"> <h3>Acesse o projeto na web</h3></a>
 
 ### Como executar o projeto:
 

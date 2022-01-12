@@ -24,7 +24,7 @@ export default function About() {
               Olá! Me chamo Matheus Alecksander, estou iniciando no mundo do desenvolvimento
               front-end e criei este site para fins de estudo. <br />
               Todos os dados são fornecidos pela Nomics, através de sua api gratuita.
-              <a href="https://nomics.com" target="_blank" rel="noreferrer">Confira aqui.</a> <br />
+              <a href="https://nomics.com" target="_blank" rel="noreferrer">&nbsp;Confira aqui.</a> <br />
             </p>
             <h3>
               Tecnologias utilizadas no projeto:

@@ -2,6 +2,8 @@ interface CryptoItemProps {
   id: string;
   name: string;
   price: number;
+  price_change: number;
+  price_change_pct: number;
   rank: number;
   logo_url: string;
 }
@@ -13,35 +15,61 @@ export function CryptoItem({
   logo_url,
   name, 
   price,
+  price_change,
+  price_change_pct,
   rank
 }: CryptoItemProps) {
+
   return (
-    <div className={styles.itemContainer}>
-      <div className={styles.rankContainer}>
-        <p className={styles.rankText}>
-          {rank}
-        </p>
-      </div>
-      <div className={styles.cryptoTicker}>
-        <span>{id}</span>
-      </div>
-      
-      <div className={styles.nameContainer}>
-        <div className={styles.imageContainer}>
-          <img className={styles.image} src={logo_url} alt={`${name} logo`} />
-        </div>
+    <tr>
+      <td>
+        <div className={styles.itemContainer}>
         <span>
-          {name} 
+          {rank}
         </span>
-      </div>
-      <div className={styles.priceContainer}>
-        {
-        new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        }).format(price)
-        }
-      </div>
-    </div>
+        </div>
+      </td>
+      <td>
+        <div className={styles.itemContainer}>
+          <p>{id}</p>
+        </div>
+      </td>
+      
+      <td>
+        <div className={styles.nameContainer}>
+          <div className={styles.imageContainer}>
+            <img src={logo_url} alt={`${name} logo`} />
+          </div>
+          <span>
+            {name} 
+          </span>
+        </div>
+      </td>
+      <td>
+        <div className={styles.itemContainer}>
+          {
+            new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }).format(price)
+          }
+        </div>
+      </td>
+      <td>
+        <div className={styles.itemContainer}>
+          {
+            new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            }).format(price_change)
+          }
+        </div>
+      </td>
+      <td>
+        <div className={styles.itemContainer}>
+          {(price_change_pct*100).toFixed(2)} %
+        </div>
+      </td>
+    </tr>
   )
 }

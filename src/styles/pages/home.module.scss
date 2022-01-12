@@ -13,6 +13,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  table {
+    thead {
+      tr {
+        th {
+          width: 16.6%;
+        }
+      }
+    }
+  }
 }
 
 .itemContainer {
@@ -59,7 +69,7 @@
   }
 }
 
-@media (max-width: 720px) {
+/* @media (max-width: 720px) {
   .contentSection {
     width: 100%;
   }
@@ -80,3 +90,4 @@
     }
   }
 }
+ */

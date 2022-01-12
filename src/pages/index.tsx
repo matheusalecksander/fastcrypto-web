@@ -8,17 +8,31 @@ interface CryptoProps {
   id: string;
   name: string;
   price: number;
+  price_change: number;
+  price_change_pct: number;
   rank: number;
   logo_url: string;
-  cryptos: []
+}
+
+interface HomeProps {
+  cryptos: CryptoProps[]
 }
 
 const apiKey = process.env.API_KEY
 
 export async function getServerSideProps() {
+  
   const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=20&page=1`)
+  let cryptos = [];
+  
+  for (let i = 0; i < response.data.length; i++) {
+    const { name, id, price, rank, logo_url } = response.data[i]
+    const { price_change, price_change_pct } = response.data[i]["1d"]
 
-  const cryptos: CryptoProps[] = response.data
+    const crypto: CryptoProps = { name, id, price, rank, price_change, price_change_pct, logo_url }
+
+    cryptos.push(crypto)
+  }
 
   return {
     props: {
@@ -27,7 +41,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({cryptos}: CryptoProps) {
+export default function Home({cryptos}: HomeProps) {  
   return (
     <>
       <Head>
@@ -35,34 +49,48 @@ export default function Home({cryptos}: CryptoProps) {
       </Head>
       <main className={styles.contentContainer}>
         <section className={styles.contentSection}>
-          <div className={styles.dataHeader}>
-            <div className={styles.ranking}>
-              <h3>Ranking</h3>
-            </div>
-            <div className={styles.ticker}>
-              <h3>Ticker</h3>
-            </div>
-            <div className={styles.name}>
-              <h3>Nome</h3>
-            </div>
-            <div className={styles.price}>
-              <h3>Valor</h3>
-            </div>
-          </div>
-          {
-            cryptos.map((crypto: CryptoProps) => {
-              return(
-                <CryptoItem 
-                  key={crypto.id}
-                  id={crypto.id}
-                  logo_url={crypto.logo_url}
-                  name={crypto.name}
-                  price={crypto.price}
-                  rank={crypto.rank}
-                />
-              )
-            })
-          }
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Ranking
+                </th>
+                <th>
+                  Ticker
+                </th>
+                <th>
+                  Nome
+                </th>
+                <th>
+                  Valor
+                </th>
+                <th>
+                  Variação(US$)
+                </th>
+                <th>
+                  Variação(%)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                {
+                  cryptos.map((crypto: CryptoProps) => {
+                    return (
+                      <CryptoItem 
+                        id={crypto.id}
+                        logo_url={crypto.logo_url}
+                        name={crypto.name}
+                        price={crypto.price}
+                        price_change={crypto.price_change}
+                        price_change_pct={crypto.price_change_pct}
+                        rank={crypto.rank}
+                      />
+                    )
+                  })
+                }
+          </tbody>
+          </table>
         </section>
       </main>
     </>
