@@ -77,7 +77,8 @@ export default function Home({cryptos}: HomeProps) {
                 {
                   cryptos.map((crypto: CryptoProps) => {
                     return (
-                      <CryptoItem 
+                      <CryptoItem
+                        key={crypto.id}
                         id={crypto.id}
                         logo_url={crypto.logo_url}
                         name={crypto.name}
