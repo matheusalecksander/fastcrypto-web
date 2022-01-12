@@ -68,7 +68,7 @@ li {
     padding: 0 8rem;
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 780px) {
   html {
     font-size: 87.5%;
   }
@@ -78,7 +78,11 @@ li {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
+  html {
+    font-size: 83.5%;
+  }
+
   body {
     padding: 0 2rem;
   }

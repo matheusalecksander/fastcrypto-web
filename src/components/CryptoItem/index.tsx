@@ -57,17 +57,21 @@ export function CryptoItem({
       </td>
       <td>
         <div className={styles.itemContainer}>
+          <span className={price_change_pct > 0 ? styles.positiveVariation : styles.negativeVariation }>
           {
             new Intl.NumberFormat('en-US', {
               style: 'currency',
               currency: 'USD'
             }).format(price_change)
           }
+          </span>
         </div>
       </td>
       <td>
         <div className={styles.itemContainer}>
+          <span className={price_change_pct > 0 ? styles.positiveVariation : styles.negativeVariation }>
           {(price_change_pct*100).toFixed(2)} %
+          </span>
         </div>
       </td>
     </tr>

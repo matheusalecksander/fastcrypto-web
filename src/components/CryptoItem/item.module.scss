@@ -23,7 +23,7 @@
 }
 
 .imageContainer {
-  width: 50%;
+  width: 30%;
   height: 50%;
   display: flex;
   align-items: center;
@@ -35,6 +35,14 @@
     width: auto;
     height: auto;
   }
+}
+
+.positiveVariation {
+  color: var(--green-300);
+}
+
+.negativeVariation {
+  color: var(--red);
 }
 
 @media (max-width: 420px) {

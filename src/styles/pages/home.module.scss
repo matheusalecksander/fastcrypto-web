@@ -4,90 +4,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.contentSection {
-  height: 100%;
-  width: 100%;
+  .contentSection {
+    height: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  table {
-    thead {
-      tr {
-        th {
-          width: 16.6%;
-        }
+    table {
+      padding-top: 1rem;
+
+      th {
+        width: 16.6%;
+        padding-bottom: 1rem;
+      }
+    }
+
+    tbody {
+      tr:nth-child(odd) {
+        background: rgba(255, 255, 255, 0.1);
       }
     }
   }
 }
 
-.itemContainer {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.dataHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 65px;
-
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-
-  .ranking {
-    width: 15%;
-    height: 100%;
-  }
-
-  .ticker {
-    width: 20%;
-    height: 100%;
-  }
-
-  .name {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  .price {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-  }
-}
-
-/* @media (max-width: 720px) {
+@media (max-width: 640px) {
   .contentSection {
-    width: 100%;
-  }
-}
-
-@media (max-width: 420px) {
-  .dataHeader {
-    font-size: 65%;
-    height: 45px;
-    width: 100%;
-
-    .name {
-      width: 35%;
-    }
-
-    .price {
-      width: 35%;
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
     }
   }
 }
- */
