@@ -17,8 +17,27 @@
       padding-top: 1rem;
 
       th {
-        width: 16.6%;
         padding-bottom: 1rem;
+      }
+
+      .rankingContainer {
+        width: 10%;
+        height: 100%;
+      }
+
+      .nameContainer {
+        width: 50%;
+        height: 100%;
+      }
+
+      .priceContainer {
+        width: 20%;
+        height: 100%;
+      }
+
+      .variationContainer {
+        width: 20%;
+        height: 100%;
       }
     }
 
@@ -36,6 +55,7 @@
       display: block;
       overflow-x: auto;
       white-space: nowrap;
+      font-size: 83.75%;
     }
   }
 }

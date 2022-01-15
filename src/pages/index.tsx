@@ -52,23 +52,17 @@ export default function Home({cryptos}: HomeProps) {
           <table>
             <thead>
               <tr>
-                <th>
-                  Ranking
+                <th className={styles.rankingContainer}>
+                  #
                 </th>
-                <th>
-                  Ticker
-                </th>
-                <th>
+                <th className={styles.nameContainer}>
                   Nome
                 </th>
-                <th>
+                <th className={styles.priceContainer}>
                   Valor
                 </th>
-                <th>
+                <th className={styles.variationContainer}>
                   Variação(US$)
-                </th>
-                <th>
-                  Variação(%)
                 </th>
               </tr>
             </thead>
@@ -90,7 +84,7 @@ export default function Home({cryptos}: HomeProps) {
                     )
                   })
                 }
-          </tbody>
+            </tbody>
           </table>
         </section>
       </main>

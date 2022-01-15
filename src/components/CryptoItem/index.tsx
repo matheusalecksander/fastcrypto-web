@@ -24,37 +24,39 @@ export function CryptoItem({
     <tr>
       <td>
         <div className={styles.itemContainer}>
-        <span>
-          {rank}
-        </span>
-        </div>
-      </td>
-      <td>
-        <div className={styles.itemContainer}>
-          <p>{id}</p>
+          <span>
+            {rank}
+          </span>
         </div>
       </td>
       
       <td>
-        <div className={styles.nameContainer}>
+        <div className={styles.itemNameContainer}>
           <div className={styles.imageContainer}>
             <img src={logo_url} alt={`${name} logo`} />
           </div>
+          <div className={styles.nameContainer}>
+            <span>
+              {name} -&nbsp;<p>{id}</p>
+            </span>
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div className={styles.itemContainer}>
           <span>
-            {name} 
+            {
+              new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+              }).format(price)
+            }&nbsp;
+            <p className={price_change_pct > 0 ? styles.positiveVariation : styles.negativeVariation }>({(price_change_pct*100).toFixed(2)} %)</p>
           </span>
         </div>
       </td>
-      <td>
-        <div className={styles.itemContainer}>
-          {
-            new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: 'USD'
-            }).format(price)
-          }
-        </div>
-      </td>
+      
       <td>
         <div className={styles.itemContainer}>
           <span className={price_change_pct > 0 ? styles.positiveVariation : styles.negativeVariation }>
@@ -64,13 +66,6 @@ export function CryptoItem({
               currency: 'USD'
             }).format(price_change)
           }
-          </span>
-        </div>
-      </td>
-      <td>
-        <div className={styles.itemContainer}>
-          <span className={price_change_pct > 0 ? styles.positiveVariation : styles.negativeVariation }>
-          {(price_change_pct*100).toFixed(2)} %
           </span>
         </div>
       </td>
