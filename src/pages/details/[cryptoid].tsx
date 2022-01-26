@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from 'next'
 import Link from 'next/link';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { DetailsContent } from '../../components/DetailsContent';
 import { DetailsHeader } from '../../components/DetailsHeader';
 
@@ -81,7 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export default function CryptoDetails({ crypto }: Crypto) {
-  const [date, setDate] = useState("7")
+  const [date, setDate] = useState<"7" | "30" | "365">("7")
 
   return (
     <main className={styles.container}>
@@ -102,14 +102,14 @@ export default function CryptoDetails({ crypto }: Crypto) {
                 key={item.id}
               />
               <DetailsContent
-                setProps={(e) => setDate(e)}
+                setProps={(e: SetStateAction<"7" | "30" | "365">) => setDate(e)}
                 name={item.name}
                 market_cap_change={item[`${date}d`].market_cap_change}
                 market_cap_change_pct={item[`${date}d`].market_cap_change_pct}
                 price_change={item[`${date}d`].price_change}
                 price_change_pct={item[`${date}d`].price_change_pct}
                 days={date}
-                key={item.id}
+                key={item.name}
 
               />
             </>

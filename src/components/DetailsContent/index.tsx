@@ -7,7 +7,7 @@ interface DetailsContentProps {
   price_change: number;
   price_change_pct: number;
   days: string;
-  setProps: (e: HTMLSelectElement["value"]) => void;
+  setProps: (e: "7" | "30" | "365") => void;
 }
 
 export function DetailsContent({ name, days, market_cap_change, market_cap_change_pct, price_change_pct, price_change, setProps }: DetailsContentProps) {
@@ -17,6 +17,7 @@ export function DetailsContent({ name, days, market_cap_change, market_cap_chang
         Variações de {name} nos últimos 7, 30 e 365 dias.
       </h2>
       <div className={styles.infoContainer}>
+        {/* @ts-ignore */}
         <select name="select" value={days} onChange={(e) => setProps(e.target.value)}>
           <option value="7">7 dias:</option>
           <option value="30">30 dias:</option>
