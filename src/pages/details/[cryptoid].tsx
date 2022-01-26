@@ -81,7 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export default function CryptoDetails({ crypto }: Crypto) {
-  const [date, setDate] = useState<"7" | "30" | "365">("7")
+  const [date, setDate] = useState("7")
 
   return (
     <main className={styles.container}>
@@ -109,6 +109,8 @@ export default function CryptoDetails({ crypto }: Crypto) {
                 price_change={item[`${date}d`].price_change}
                 price_change_pct={item[`${date}d`].price_change_pct}
                 days={date}
+                key={item.id}
+
               />
             </>
           )
