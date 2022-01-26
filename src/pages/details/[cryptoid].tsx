@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank`)
+  const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=25&page=1`)
 
   const paths = response.data.map((crypto: CryptoPathProps) => {
     return {

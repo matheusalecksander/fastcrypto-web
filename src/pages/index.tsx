@@ -22,7 +22,7 @@ const apiKey = process.env.API_KEY
 
 export async function getServerSideProps() {
 
-  const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=20&page=1`)
+  const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=25&page=1`)
   let cryptos = [];
 
   for (let i = 0; i < response.data.length; i++) {
