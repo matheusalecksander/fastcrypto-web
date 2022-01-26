@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   let crypto;
 
   try {
-    const response = await setTimeout(1000, api.get(`/currencies/ticker?key=${apiKey}&ids=${params?.cryptoid}`))
+    const response = await api.get(`/currencies/ticker?key=${apiKey}&ids=${params?.cryptoid}`)
     crypto = response.data;
   } catch (err) {
     console.log(err)
