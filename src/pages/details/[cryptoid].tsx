@@ -1,12 +1,13 @@
 import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from 'next'
 import Link from 'next/link';
 import { SetStateAction, useState } from 'react';
+import { setTimeout } from 'timers/promises';
 import { DetailsContent } from '../../components/DetailsContent';
 import { DetailsHeader } from '../../components/DetailsHeader';
 
-import { api } from '../../services/api'
+import { api } from '../../services/api';
 
-import styles from '../../styles/pages/cryptodetails.module.scss'
+import styles from '../../styles/pages/cryptodetails.module.scss';
 
 interface CryptoDetailsProps {
   id: string;
@@ -54,20 +55,8 @@ interface CryptoPathProps {
 
 const apiKey = process.env.API_KEY
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
-  const { params } = context;
-  const response = await api.get(`/currencies/ticker?key=${apiKey}&ids=${params?.cryptoid}`)
-  const crypto = response.data;
-
-  return {
-    props: {
-      crypto
-    },
-  }
-}
-
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=25&page=1`)
+  const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=20&page=1`)
 
   const paths = response.data.map((crypto: CryptoPathProps) => {
     return {
@@ -78,6 +67,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
 
   return { paths, fallback: false }
+}
+
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const { params } = context;
+  let crypto;
+
+  try {
+    const response = await setTimeout(1000, api.get(`/currencies/ticker?key=${apiKey}&ids=${params?.cryptoid}`))
+    crypto = response.data;
+  } catch (err) {
+    console.log(err)
+  }
+
+  return {
+    props: {
+      crypto
+    },
+  }
 }
 
 export default function CryptoDetails({ crypto }: Crypto) {
