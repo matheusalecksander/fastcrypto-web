@@ -14,17 +14,17 @@ interface CryptoProps {
   logo_url: string;
 }
 
-interface HomeProps {
+interface PageProps {
   cryptos: CryptoProps[]
 }
 
 const apiKey = process.env.API_KEY
 
 export async function getServerSideProps() {
-  
+
   const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=20&page=1`)
   let cryptos = [];
-  
+
   for (let i = 0; i < response.data.length; i++) {
     const { name, id, price, rank, logo_url } = response.data[i]
     const { price_change, price_change_pct } = response.data[i]["1d"]
@@ -41,7 +41,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Home({cryptos}: HomeProps) {  
+export default function Home({ cryptos }: PageProps) {
   return (
     <>
       <Head>
@@ -67,23 +67,23 @@ export default function Home({cryptos}: HomeProps) {
               </tr>
             </thead>
             <tbody>
-              
-                {
-                  cryptos.map((crypto: CryptoProps) => {
-                    return (
-                      <CryptoItem
-                        key={crypto.id}
-                        id={crypto.id}
-                        logo_url={crypto.logo_url}
-                        name={crypto.name}
-                        price={crypto.price}
-                        price_change={crypto.price_change}
-                        price_change_pct={crypto.price_change_pct}
-                        rank={crypto.rank}
-                      />
-                    )
-                  })
-                }
+
+              {
+                cryptos.map((crypto: CryptoProps) => {
+                  return (
+                    <CryptoItem
+                      key={crypto.id}
+                      id={crypto.id}
+                      logo_url={crypto.logo_url}
+                      name={crypto.name}
+                      price={crypto.price}
+                      price_change={crypto.price_change}
+                      price_change_pct={crypto.price_change_pct}
+                      rank={crypto.rank}
+                    />
+                  )
+                })
+              }
             </tbody>
           </table>
         </section>
