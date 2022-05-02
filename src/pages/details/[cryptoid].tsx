@@ -1,7 +1,6 @@
-import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from 'next'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link';
 import { SetStateAction, useState } from 'react';
-import { setTimeout } from 'timers/promises';
 import { DetailsContent } from '../../components/DetailsContent';
 import { DetailsHeader } from '../../components/DetailsHeader';
 
@@ -48,14 +47,14 @@ interface CryptoDetailsProps {
 interface Crypto {
   crypto: CryptoDetailsProps[]
 }
-
+/* 
 interface CryptoPathProps {
   id: string
 }
-
+ */
 const apiKey = process.env.API_KEY
 
-export const getStaticPaths: GetStaticPaths = async () => {
+/* export const getStaticPaths: GetStaticPaths = async () => {
   const response = await api.get(`/currencies/ticker?key=${apiKey}&sort=rank&per-page=20&page=1`)
 
   const paths = response.data.map((crypto: CryptoPathProps) => {
@@ -67,9 +66,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
 
   return { paths, fallback: false }
-}
+} */
 
-export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { params } = context;
   let crypto;
 
