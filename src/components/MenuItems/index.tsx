@@ -15,15 +15,21 @@ export function MenuItems({display = 'flex', onClick}: MenuItemsProps) {
 
   return (
     <ul className={display === 'flex' ? styles.containerFlex : styles.containerGrid}>
-      <li className={router.asPath === "/" ? styles.active : ""} onClick={onClick}>
-        <FaHome /> <Link href="/">Home</Link>
-      </li>
+      <Link passHref href="/">
+        <li className={router.asPath === "/" ? styles.active : ""} onClick={onClick}>
+          <FaHome /> Home
+        </li>
+      </Link>
+      <Link passHref href="/about">
       <li className={router.asPath === "/about" ? styles.active : ""} onClick={onClick}>
-        < FaQuestionCircle/> <Link href="/about">About</Link>
+        < FaQuestionCircle/> About
       </li>
+      </Link>
+      <Link passHref href="/contact">
       <li className={router.asPath == "/contact" ? styles.active : ""} onClick={onClick}>
-        <FaWhatsapp /> <Link href="/contact">Contact</Link>
+        <FaWhatsapp /> Contact
       </li>
+      </Link>
     </ul>
   )
 }

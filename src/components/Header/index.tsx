@@ -14,7 +14,7 @@ export function Header({showCloseMenuIcon = false, onClick, windowWidth}: Header
   return (
     <header className={styles.appHeader}>
       <div className={styles.logoContainer}>
-        <Link href="/">
+        <Link passHref href="/">
           <h1>
             FastCrypto
           </h1>
